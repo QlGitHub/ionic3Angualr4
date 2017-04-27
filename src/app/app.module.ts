@@ -11,6 +11,10 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireModule} from 'angularfire2';
+import { AuthProvider } from '../providers/auth-provider';
+
+import { Login } from '../pages/login/login';
+import { Register } from '../pages/register/register';
 
 export const firebaseConfig= {
      apiKey: "AIzaSyBMy2MVkEuBbT8t8GM9pcTZHWf9NnyIues",
@@ -28,7 +32,9 @@ export const firebaseConfig= {
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    Login,
+    Register
   ],
   imports: [
     BrowserModule,
@@ -46,7 +52,8 @@ export const firebaseConfig= {
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthProvider
   ]
 })
 export class AppModule {}
