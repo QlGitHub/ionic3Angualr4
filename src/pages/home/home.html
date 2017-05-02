@@ -1,10 +1,22 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Home Test FireBase</ion-title>
+
     <ion-buttons end>
       <button ion-button color="primary" (click)="logout()">
         <ion-icon ios="ios-exit" md="md-exit"></ion-icon>
       </button>
+       <ion-fab bottom right >
+        <button ion-fab>Share</button>
+        <ion-fab-list side="bottom">
+            <button ion-fab (click)="addContact()">Facebook</button>
+            <button ion-fab>Twitter</button>
+            <button ion-fab>Youtube</button>
+        </ion-fab-list>
+    <ion-fab-list side="left">
+        <button ion-fab>Vimeo</button>
+  </ion-fab-list>
+</ion-fab>
     </ion-buttons>
   </ion-navbar>
 </ion-header>

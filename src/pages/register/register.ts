@@ -2,7 +2,7 @@ import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { NavController, AlertController, NavParams, LoadingController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from '../../providers/auth-service';
+import { AuthService } from "../../providers/auth-provider";
 /*
   Generated class for the Register page.
 

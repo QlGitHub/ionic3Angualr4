@@ -1,6 +1,5 @@
 import { RegisterPage } from './../pages/register/register';
 import { Login } from './../pages/login/login';
-import { AuthService } from './../providers/auth-service';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -13,7 +12,13 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AngularFireModule} from 'angularfire2';
+import { AngularFireModule } from 'angularfire2';
+import { ThreadsPage } from "../pages/threads/threads";
+import { ChatThread } from "../pages/chat-thread/chat-thread";
+import { AddContact } from "../pages/add-contact/add-contact";
+import { ChatsProvider } from "../providers/chats-provider";
+import { UserProvider } from "../providers/user-provider";
+import { AuthService } from "../providers/auth-provider";
 
 export const firebaseConfig= {
      apiKey: "AIzaSyBMy2MVkEuBbT8t8GM9pcTZHWf9NnyIues",
@@ -30,10 +35,13 @@ export const firebaseConfig= {
     MyApp,
     AboutPage,
     ContactPage,
+    ThreadsPage,
     HomePage,
     TabsPage,
     Login,
-    RegisterPage
+    RegisterPage,
+    ChatThread,
+    AddContact
   ],
   imports: [
     BrowserModule,
@@ -45,16 +53,20 @@ export const firebaseConfig= {
     MyApp,
     AboutPage,
     ContactPage,
+    ThreadsPage,
     HomePage,
     TabsPage,
     Login,
     RegisterPage
+    
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthService
+    AuthService,
+    ChatsProvider,
+    UserProvider
   ]
 })
 export class AppModule {}

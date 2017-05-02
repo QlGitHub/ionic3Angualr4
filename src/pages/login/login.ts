@@ -3,7 +3,7 @@ import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
-import { AuthService } from '../../providers/auth-service';
+import { AuthService } from "../../providers/auth-provider";
 
 /**
  * Generated class for the Login page.

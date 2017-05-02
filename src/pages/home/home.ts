@@ -1,7 +1,7 @@
 import { Login } from './../login/login';
-import { AuthService } from './../../providers/auth-service';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { AuthService } from "../../providers/auth-provider";
 
 @Component({
   selector: 'page-home',
@@ -32,4 +32,9 @@ export class HomePage {
   logout() {
     this.auth.logout();
   }
+  
+  addContact(){
+
+   }
+
 }
