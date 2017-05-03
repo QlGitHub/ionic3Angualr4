@@ -1,3 +1,4 @@
+import { AddContact } from './../add-contact/add-contact';
 import { Login } from './../login/login';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
@@ -18,13 +19,13 @@ export class HomePage {
         this.isLoggedIn = false;
       } else {
         if(auth.google) {
-          this.auth.displayname = auth.google.displayName;
+          this.auth.displayName = auth.google.displayName;
           this.auth.email = auth.google.email;
         } else {
           this.auth.email = auth.auth.email;
         }
         this.isLoggedIn = true;
-        this.displayname = this.auth.displayname;
+        this.displayname = this.auth.displayName;
       }
     });
   }
@@ -34,7 +35,6 @@ export class HomePage {
   }
   
   addContact(){
-
-   }
-
+    this.navCtrl.push(AddContact);
+  }
 }

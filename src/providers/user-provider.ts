@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 import { AngularFire } from "angularfire2";
-
+import * as firebase from 'firebase';
 /*
   Generated class for the UserProvider provider.
 
@@ -12,22 +11,22 @@ import { AngularFire } from "angularfire2";
 */
 @Injectable()
 export class UserProvider {
-
-  constructor(public http: Http, public local: Storage, public af: AngularFire) {
+  
+  constructor(public af: AngularFire) {
     console.log('Hello UserProvider Provider');
   }
 
-  getUid() {
-    return this.local.get('uid');
-  }
 
   getCurrentUser() {
-    return this.getUid().then((uid)=>{
-      return this.af.database.object('/users/${uid}');
-    });  
+    return firebase.auth().currentUser;
   }
 
-  containsUser() {
+  saveContactsInformation(contactName: string) {
+    var displayName = this.getCurrentUser().displayName;
+    if (!displayName) {
+
+    }
+    firebase.database().ref('Contacts/' + displayName).push(contactName);
   }
 
 }

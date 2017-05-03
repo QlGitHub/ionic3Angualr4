@@ -13,11 +13,11 @@ export class ThreadsPage {
     threads: FirebaseListObservable<any>;
 
     constructor(public chatsPro: ChatsProvider){
-      this.chatsPro.getThreads().then((threads) =>{
-        this.threads.map(thread =>{
+      // this.chatsPro.getThreads().then((threads) =>{
+      //   this.threads.map(thread =>{
 
-        });
-      });
+      //   });
+      // });
     }
 
     addContact(){

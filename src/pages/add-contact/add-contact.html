@@ -14,9 +14,8 @@
 
 
 <ion-content padding>
-  <ion-input aria-placeholder="Add by Email" [(ngModel)]= "contactemail">
-  </ion-input>
+  <ion-input type="text" placeholder="Contact Name" [(ngModel)]= "contactName"></ion-input>
    <button ion-button color="primary" (click)="addContact()">
-        <ion-icon ios="ios-exit" md="md-exit"></ion-icon>
+        <ion-icon ios="ios-search" md="md-search"></ion-icon>
     </button>
 </ion-content>

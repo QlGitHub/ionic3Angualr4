@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
-
+import { AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
+import * as firebase from 'firebase';
 /*
   Generated class for the AuthProvider provider.
 
@@ -11,7 +11,7 @@ import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 */
 @Injectable()
 export class AuthService {
-  public displayname : string;
+  public displayName : string;
   public email: string;
   
   constructor(public af: AngularFire) {
@@ -43,15 +43,27 @@ export class AuthService {
       password: password
     });
   }
+
   saveUserInfoFromForm(uid, email, password, name) {
-    return this.af.database.object('RegisteredUsers/' + uid).set({
+    return this.af.database.object('RegisteredUsers/' + name).set({
       email: email,
       password: password,
-      displayname: name
+      displayName: name
     });
   }
 
+  updateDisplayName(name: string) {
+    firebase.auth().currentUser.updateProfile({
+      displayName: name,
+      photoURL:""
+    })
+  }
+  
   logout(): any {
     this.af.auth.logout();
+  }
+
+  getUserRef() {
+    return firebase.database().ref('RegisteredUsers');
   }
 }

@@ -19,10 +19,10 @@ export class ChatsProvider {
 
 
   getThreads() {
-    return this.userPro.getUid().then((uid) => {
-        this.threads = this.af.database.list('ThreadTable/${uid}');
-        return this.threads;
-    });
+    // return this.userPro.getUid().then((uid) => {
+    //     this.threads = this.af.database.list('ThreadTable/${uid}');
+    //     return this.threads;
+    // });
   }
 
 }

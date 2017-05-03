@@ -1,6 +1,9 @@
+import { UserProvider } from './../../providers/user-provider';
+import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AuthService } from "../../providers/auth-provider";
+import * as firebase from 'firebase';
 
 /**
  * Generated class for the AddContact page.
@@ -13,8 +16,8 @@ import { AuthService } from "../../providers/auth-provider";
   templateUrl: 'add-contact.html',
 })
 export class AddContact {
-  contactemail: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authPro: AuthService) {
+  contactName: string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authSer: AuthService, public UserSer: UserProvider) {
 
   }
 
@@ -22,9 +25,16 @@ export class AddContact {
     console.log('ionViewDidLoad AddContact');
   }
 
+
   addContact() {
-    if (this.contactemail) {
-      
-    }
+    if (this.contactName) {
+      var userRef = firebase.database().ref('RegisteredUsers');
+      userRef.once('value').then((snapshot)=>{
+        if (snapshot.hasChild(this.contactName)) {
+          this.UserSer.saveContactsInformation(this.contactName);
+          this.navCtrl.setRoot(HomePage);
+        }
+      });
+  }
   }
 }

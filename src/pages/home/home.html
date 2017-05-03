@@ -1,28 +1,18 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Home Test FireBase</ion-title>
-
-    <ion-buttons end>
-      <button ion-button color="primary" (click)="logout()">
-        <ion-icon ios="ios-exit" md="md-exit"></ion-icon>
-      </button>
-       <ion-fab bottom right >
-        <button ion-fab>Share</button>
-        <ion-fab-list side="bottom">
-            <button ion-fab (click)="addContact()">Facebook</button>
-            <button ion-fab>Twitter</button>
-            <button ion-fab>Youtube</button>
-        </ion-fab-list>
-    <ion-fab-list side="left">
-        <button ion-fab>Vimeo</button>
-  </ion-fab-list>
-</ion-fab>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <h2>Welcome to Ionic!</h2>
+   <ion-fab top right edge >
+        <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+        <ion-fab-list side="bottom">
+            <button ion-fab (click)="addContact()"><ion-icon ios="ios-person-add" md="md-person-add" ></ion-icon></button>
+            <button ion-fab (click)="logout()"> <ion-icon ios="ios-log-out" md="md-log-out"></ion-icon></button>
+        </ion-fab-list>
+</ion-fab>
   <p>
     This starter project comes with simple tabs-based layout for apps
     that are going to primarily use a Tabbed UI.

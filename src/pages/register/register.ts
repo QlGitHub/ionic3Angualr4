@@ -42,6 +42,7 @@ export class RegisterPage {
     if (this.registerForm.valid) {
       this.authService.register(email, password).then((user) => {
         this.authService.saveUserInfoFromForm(user.uid, email, password, fullname).then(() =>{
+          this.authService.updateDisplayName(fullname);
           this.navCtrl.setRoot(HomePage);
         });
       }).catch((error) => {

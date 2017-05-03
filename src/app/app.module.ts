@@ -57,7 +57,8 @@ export const firebaseConfig= {
     HomePage,
     TabsPage,
     Login,
-    RegisterPage
+    RegisterPage,
+    AddContact
     
   ],
   providers: [

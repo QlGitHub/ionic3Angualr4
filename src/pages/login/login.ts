@@ -43,7 +43,7 @@ export class Login {
   login() {
     this.submitAttempt = true;
     if (this.loginForm.valid) {
-      this.auth.loginwithEmail(this.loginForm.value.email, this.loginForm.value.password).then((data) => {
+      this.auth.loginwithEmail(this.loginForm.value.email, this.loginForm.value.password).then((data) => {     
           this.navCtrl.setRoot(HomePage);
       }).catch((error) => {
           if(error) {
