@@ -43,7 +43,7 @@ export class Login {
   login() {
     this.submitAttempt = true;
     if (this.loginForm.valid) {
-      this.auth.loginwithEmail(this.loginForm.value.email, this.loginForm.value.password).then((data) => {     
+      this.auth.loginwithEmail(this.loginForm.value.email, this.loginForm.value.password).then((data) => {
           this.navCtrl.setRoot(HomePage);
       }).catch((error) => {
           if(error) {
@@ -67,10 +67,11 @@ export class Login {
   }
 
   loginwithGoogle() {
-    this.auth.loginwithGoogle().then((data) =>{
-      this.navCtrl.setRoot(HomePage);
-    });
+   this.auth.loginwithGoogle().subscribe(() => {
+     this.navCtrl.setRoot(HomePage);
+   });
   }
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad Login');
   }

@@ -25,16 +25,10 @@ export class AddContact {
     console.log('ionViewDidLoad AddContact');
   }
 
-
   addContact() {
     if (this.contactName) {
-      var userRef = firebase.database().ref('RegisteredUsers');
-      userRef.once('value').then((snapshot)=>{
-        if (snapshot.hasChild(this.contactName)) {
-          this.UserSer.saveContactsInformation(this.contactName);
-          this.navCtrl.setRoot(HomePage);
-        }
-      });
-  }
+      this.UserSer.saveContact(this.contactName)
+        .subscribe(() => this.navCtrl.setRoot(HomePage));
+    }
   }
 }

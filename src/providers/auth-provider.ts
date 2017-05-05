@@ -1,7 +1,8 @@
+import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
+import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import * as firebase from 'firebase';
 /*
   Generated class for the AuthProvider provider.
@@ -11,33 +12,34 @@ import * as firebase from 'firebase';
 */
 @Injectable()
 export class AuthService {
-  public displayName : string;
+  public displayName: string;
   public email: string;
-  
+
   constructor(public af: AngularFire) {
-    
+
     //this.UserData = firebase.database().ref('/UserData');
   }
 
-  loginwithEmail(email : string, password : string) : any {
+  loginwithEmail(email: string, password: string): any {
     return this.af.auth.login({
       email: email,
       password: password
     },
-    {
-      provider: AuthProviders.Password,
-      method: AuthMethods.Password
+      {
+        provider: AuthProviders.Password,
+        method: AuthMethods.Password
+      });
+  }
+
+  loginwithGoogle(): Observable<any> {
+    let promise = this.af.auth.login({
+      provider: AuthProviders.Google,
+      method: AuthMethods.Popup
     });
+    return Observable.fromPromise(<Promise<any>>promise);
   }
 
-  loginwithGoogle() {
-    return this.af.auth.login({
-        provider: AuthProviders.Google,
-        method: AuthMethods.Popup
-        });
-  }
-
-  register(email: string, password: string) : any {
+  register(email: string, password: string): any {
     return this.af.auth.createUser({
       email: email,
       password: password
@@ -55,10 +57,10 @@ export class AuthService {
   updateDisplayName(name: string) {
     firebase.auth().currentUser.updateProfile({
       displayName: name,
-      photoURL:""
+      photoURL: ""
     })
   }
-  
+
   logout(): any {
     this.af.auth.logout();
   }
